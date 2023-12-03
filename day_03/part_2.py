@@ -41,7 +41,7 @@ def build_matrix(lines: list[str]) -> list[list[str]]:
 
 
 
-def find_symbols(matrix_scheme: list[list[str]]) -> list[int]:
+def find_symbols(matrix_scheme: list[list[str]]) -> list[list[int]]:
     """
         Input: the matrix representing the input
 
