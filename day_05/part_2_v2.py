@@ -58,7 +58,7 @@ def intersection(interval: list[int], transformation: tuple[int, int]) -> list[l
     """
         Input:  interval:           a list of two integers representing an 
                                     interval fo values
-                transformations:    a tuple of two integers representing an 
+                transformation:    a tuple of two integers representing an 
                                     interval of values
         
         Output: a list of tree lists containing two integers each.
