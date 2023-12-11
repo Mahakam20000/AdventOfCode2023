@@ -79,7 +79,7 @@ def intersection(interval: list[int], transformation: tuple[int, int]) -> list[l
     res: list[list[int]] = [[], [], []]
     if interval[0] < transformation[0]:
         res[0] = [interval[0], transformation[0]-1]
-        res[1].append(transformation[1])
+        res[1].append(transformation[0])
     else:
         res[1].append(interval[0])
     if interval[1] > transformation[1]:
@@ -123,7 +123,7 @@ def interval_binary_search(interval: list[int], transformations_list: list[tuple
         return interval_binary_search(interval, transformations_list, lim_sx, index)
     while index > 0:
         if intersection(interval, transformations_list[index-1])[1] != []:
-            index =- 1
+            index -= 1
         else:
             break
     return index
@@ -192,7 +192,7 @@ def elaborate(seeds: [list[list[int, int]]], transformations_lists: list[list[tu
         aux: list[list[int]] = intersection(interval, trans_list[first_index][0])
         if aux[0] != []:
             heapq.heappush(elaborated_intervals, aux[0])
-        heapq.heappush(elaborated_intervals, apply_transformation(interval, trans_list[first_index][1]))
+        heapq.heappush(elaborated_intervals, apply_transformation(aux[1], trans_list[first_index][1]))
         if aux[2] != []:
             heapq.heappush(seeds, aux[2])
     return elaborate(merge_intervals(elaborated_intervals), transformations_lists, num_trans_list+1)
@@ -210,5 +210,4 @@ seeds: list[list[int]] = []
 transformations: list[list[tuple[tuple[int, int], int]]] = []
 load_input(l)
 res = elaborate(seeds, transformations)
-print(f"res: {res}")
 print(min(min(res)))
